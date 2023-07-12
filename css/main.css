@@ -41,7 +41,7 @@ b {
 
 }
 .hidden{
-    display: none;
+    display: none!important;
 }
 
 .nav-link{
