@@ -267,7 +267,7 @@
                                     <span class="btn btn-add"><i class="fas fa-shopping-bag"></i></span>
                                 </div>
                             </div>
-                        </div>                              
+                        </div>
                     </div>
                 </div>
                 <div class="col-12 text-center">
@@ -385,9 +385,9 @@
                                 <span class="hint-title"><b>Reserva</b></span>
                                 <h1 class="title">
                                     <b>Quer reservar um horário?</b>
-                                </h1> 
+                                </h1>
                                 <p class="pr-5"> Mande uma mensagem clicando no botão abaixo.<br>
-                                Reserve sua data e horário de forma simples e rápida.</p>
+                                    Reserve sua data e horário de forma simples e rápida.</p>
                                 <a class="btn btn-yellow mt-4">
                                     Fazer reserva!
                                 </a>
@@ -411,13 +411,15 @@
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-3 container-logo-footer" >
+                <div class="col-3 container-logo-footer">
                     <div>
-                        <img class="logo-footer" src="./img/logo.png">    
+                        <img class="logo-footer" src="./img/logo.png">
                     </div>
                 </div>
                 <div class="col-6 container-texto-footer">
-                    <p class="mb-0"><b>Menu On-line!</b><br>&copy; Este projeto utiliza materiais protegidos por direitos autorais para fins educacionais, em conformidade com as leis aplicáveis.<br> Todos os direitos reservados.</p>
+                    <p class="mb-0"><b>Menu On-line!</b><br>&copy; Este projeto utiliza materiais protegidos por
+                        direitos autorais para fins educacionais, em conformidade com as leis aplicáveis.<br> Todos os
+                        direitos reservados.</p>
                 </div>
                 <div class="col-3 container-redes-footer">
                     <a class="btn btn-sm btn-white btn-social mr-3">
@@ -433,7 +435,7 @@
             </div>
         </div>
     </footer>
-    
+
     <div class="modal-full " id="modelCarrinho">
         <div class="m-header">
             <div class="container">
@@ -452,10 +454,11 @@
         </div>
         <div class="m-body">
             <div class="container">
-                <div id="itensCarrinho" class="row mr-0 ml-0">
+                <div id="itensCarrinho" class="row mr-0 ml-0 hidden">
                     <div class="col-12 item-carrinho">
                         <div class="img-produto">
-                            <img  src="./img/cardapio/burguers/burger-au-poivre-kit-4-pack.3ca0e39b02db753304cd185638dad518.jpg">
+                            <img
+                                src="./img/cardapio/burguers/burger-au-poivre-kit-4-pack.3ca0e39b02db753304cd185638dad518.jpg">
                         </div>
                         <div class="dados-produto">
                             <p class="title-produto"><b>Nome do produto:</b></p>
@@ -470,14 +473,88 @@
                     </div>
                 </div>
 
-                <div id="localEntrega" class="row mr-0 ml-0 hidden">
+                <div id="localEntrega" class="row mr-0 ml-0">
+                    <div class="col-4">
+                        <div class="form-group container-cep">
+                            <label>CEP:</label>
+                            <input id="txtCEP" type="text" class="form-control">
+                            <a class="btn btn-yellow btn-sm"><i class="fa fa-search"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-8"></div>
 
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label>Endereço:</label>
+                            <input id="txtEndereco" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label>Bairro:</label>
+                            <input id="txtBairro" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label>Número:</label>
+                            <input id="txtNumero" type="text" class="form-control">
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label>Cidade:</label>
+                            <input id="txtCidade" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label>Complemento:</label>
+                            <input id="txtComplemento" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="form-group">
+                            <label>UF:</label>
+                            <select id="ddlUf" class="form-control">
+                                <option value="-1">...</option>
+                                <option value="AC">AC</option>
+                                <option value="AL">AL</option>
+                                <option value="AP">AP</option>
+                                <option value="AM">AM</option>
+                                <option value="BA">BA</option>
+                                <option value="CE">CE</option>
+                                <option value="DF">DF</option>
+                                <option value="ES">ES</option>
+                                <option value="GO">GO</option>
+                                <option value="MA">MA</option>
+                                <option value="MT">MT</option>
+                                <option value="MS">MS</option>
+                                <option value="MG">MG</option>
+                                <option value="PA">PA</option>
+                                <option value="PB">PB</option>
+                                <option value="PR">PR</option>
+                                <option value="PE">PE</option>
+                                <option value="PI">PI</option>
+                                <option value="RJ">RJ</option>
+                                <option value="RN">RN</option>
+                                <option value="RS">RS</option>
+                                <option value="RO">RO</option>
+                                <option value="RR">RR</option>
+                                <option value="SC">SC</option>
+                                <option value="SP">SP</option>
+                                <option value="SE">SE</option>
+                                <option value="TO">TO</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
 
                 <div id="resumoCarrinho" class="row mr-0 ml-0 hidden">
 
                 </div>
-                
+
             </div>
         </div>
         <div class="m-footer">
