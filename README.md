@@ -9,8 +9,6 @@ Um projeto simples e pessoal ainda em desevolvimento de um cardápio de lanches.
 
 ## Recursos Utilizados
 
-Liste as principais tecnologias, frameworks, bibliotecas ou ferramentas utilizadas no projeto. Isso pode incluir:
-
 - Linguagens de programação (HTML, CSS, JavaScript)
 - Frameworks e bibliotecas (Bootstrap)
 - Ferramentas de desenvolvimento (Git, Visual Studio Code)
