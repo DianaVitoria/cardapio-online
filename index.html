@@ -383,7 +383,7 @@
         </div>
         <div class="m-body">
             <div class="container">
-                <div id="itensCarrinho" class="row mr-0 ml-0">
+                <div id="itensCarrinho" class="row mr-0 ml-0 hidden">
                     <div class="col-12 item-carrinho">
                         <div class="img-produto">
                             <img
@@ -402,7 +402,7 @@
                     </div>
                 </div>
 
-                <div id="localEntrega" class="row mr-0 ml-0">
+                <div id="localEntrega" class="row mr-0 ml-0 hidden">
                     <div class="col-4">
                         <div class="form-group container-cep">
                             <label>CEP:</label>
@@ -480,7 +480,7 @@
                     </div>
                 </div>
 
-                <div id="resumoCarrinho" class="row mr-0 ml-0">
+                <div id="resumoCarrinho" class="row mr-0 ml-0 hidden">
                     <div class="col-12">
                         <p class="title-carrinho mt-4">
                             <b>Itens do pedido:</b>
@@ -545,16 +545,16 @@
                     </p>
                 </div>
                 <div>
-                    <a class="btn btn-yellow float-right" id="btnEtapaPedido">
+                    <a onclick="cardapio.metodos.carregarEtapa(2)" class="btn btn-yellow float-right" id="btnEtapaPedido">
                         Continuar
                     </a>
-                    <a class="btn btn-yellow float-right hidden" id="btnEtapaEndereco">
+                    <a onclick="cardapio.metodos.carregarEtapa(3)" class="btn btn-yellow float-right hidden" id="btnEtapaEndereco">
                         Revisar pedido
                     </a>
                     <a class="btn btn-yellow float-right hidden" id="btnEtapaResumo">
                         Enviar pedido
                     </a>
-                    <a class="btn btn-white mr-3 hidden float-right" id="btnVoltar">
+                    <a onclick="cardapio.metodos.voltarEtapa()" class="btn btn-white mr-3 hidden float-right" id="btnVoltar">
                         Voltar
                     </a>
                 </div>
