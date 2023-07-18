@@ -39,13 +39,13 @@ cardapio.metodos = {
         $(".container-menu a").removeClass('active');
         $("#menu-" + categoria).addClass('active');
 
-    },
+    },    
     verMais: () => {
         var ativo = $(".container-menu a.active").attr('id').split('menu-')[1];
         cardapio.metodos.obterItensCardapio(ativo, true);
         $("#btnVerMais").addClass('hidden');
     },
-
+//diminuir e aumentar quantidades
     diminuirQuantidade: (id) => {
         let qntdAtual = parseInt($("#qntd-" + id).text());
         if (qntdAtual > 0) {
@@ -57,7 +57,7 @@ cardapio.metodos = {
         let qntdAtual = parseInt($("#qntd-" + id).text());
         $("#qntd-" + id).text(qntdAtual + 1);
     },
-
+//adicionar itens ao carrinho
     adicionarAoCarrinho: (id) => {
         let qntdAtual = parseInt($("#qntd-" + id).text());
         if (qntdAtual > 0) {
@@ -75,16 +75,17 @@ cardapio.metodos = {
                     item[0].qntd = qntdAtual;
                     MEU_CARRINHO.push(item[0])
                 }
-                cardapio.metodos.mensagem('Item adicionado ao carrinho.' , 'green')
+                cardapio.metodos.mensagem('Item adicionado ao carrinho.', 'green')
                 $("#qntd-" + id).text(0);
                 cardapio.metodos.atualizarBadgeTotal();
             }
         }
     },
+//atualizar a Badge    
     atualizarBadgeTotal: () => {
         var total = 0;
-        $.each(MEU_CARRINHO,(i,e) =>{
-            total+=e.qntd
+        $.each(MEU_CARRINHO, (i, e) => {
+            total += e.qntd
         })
         if (total > 0) {
             $(".botao-carrinho").removeClass("hidden");
@@ -95,21 +96,21 @@ cardapio.metodos = {
             $(".container-total-carrinho").addClass("hidden");
         }
         $(".badge-total-carrinho").html(total);
-        
-    },
 
-    abrirCarrinho:(abrir) => {
-        if(abrir){
+    },
+//abrir carrinho
+    abrirCarrinho: (abrir) => {
+        if (abrir) {
             $("#modalCarrinho").removeClass('hidden');
-            cardapio.metodos.carregarEtapa(1);
+            cardapio.metodos.carregarCarrinho(1);
         }
         else {
             $("#modalCarrinho").addClass('hidden');
         }
 
-
+//etapas de pedidos
     },
-    carregarEtapa:(etapa)=> {
+    carregarEtapa: (etapa) => {
         if (etapa == 1) {
             $("#lblTituloEtapa").text('Seu carrinho:');
             $("#itensCarrinho").removeClass('hidden');
@@ -159,28 +160,73 @@ cardapio.metodos = {
 
     },
 
-    voltarEtapa:() =>{
+    voltarEtapa: () => {
         let etapa = $(".etapa.active").length;
         cardapio.metodos.carregarEtapa(etapa - 1);
     },
+//carrinho
+    carregarCarrinho: () => {
+        cardapio.metodos.carregarEtapa(1);
+        if (MEU_CARRINHO.length > 0) {
+            $("#itensCarrinho").html('');
+            $.each(MEU_CARRINHO, (i,e) => {
+                let temp = cardapio.templates.itemCarrinho
+                .replace(/\${img}/g, e.img)
+                .replace(/\${name}/g, e.name)
+                .replace(/\${price}/g, e.price.toFixed(2).replace('.', ','))
+                .replace(/\${id}/g, e.id)
+                .replace(/\${qntd}/g, e.qntd);
 
+                $("#itensCarrinho").append(temp);
+            });
+        } 
+        else {
+            $("#itensCarrinho").html('<p class="carrinho-vazio"><i class="fa fa-shopping-bag"></i>Seu carrinho está vazio.</p>');
 
-    mensagem: (texto, cor ='red', tempo = 3500)=> {
-        let id = Math.floor(Date.now()*Math.random()).toString();
+        }
+    },
+    diminuirQuantidadeCarrinho:(id)=>{
+        let qntdAtual = parseInt($("#qntd-carrinho-" + id).text());
+        if (qntdAtual > 1) {
+            $("#qntd-carrinho-" + id).text(qntdAtual - 1);
+            cardapio.metodos.atualizarCarrinho(id, qntdAtual -1);
+        }
+        else{
+            removerItemCarrinho(id) 
+        }  
+    },
+    aumentarQuantidadeCarrinho:(id)=>{
+        let qntdAtual = parseInt($("#qntd-carrinho-" + id).text());
+        $("#qntd-carrinho-" + id).text(qntdAtual + 1);
+            cardapio.metodos.atualizarCarrinho(id, qntdAtual + 1);
+    },
+    removerItemCarrinho:(id)=>{
+        MEU_CARRINHO = $.grep(MEU_CARRINHO, (e,i) => {return e.id !=id});
+        cardapio.metodos.carregarCarrinho();
+        cardapio.metodos.atualizarBadgeTotal();
+    },
+    atualizarCarrinho: (id,qntd)=>{
+        let objIndex = MEU_CARRINHO .findIndex(obj => obj.id == id);
+        MEU_CARRINHO[objIndex].qntd = qntd;
+        cardapio.metodos.atualizarBadgeTotal();
+    },
+//mensagens
+    mensagem: (texto, cor = 'red', tempo = 3500) => {
+        let id = Math.floor(Date.now() * Math.random()).toString();
 
         let msg = `<div id="msg-${id}" class="animated fadeInDown toast ${cor}">${texto}</div>`;
 
         $("#container-mensagens").append(msg);
-        setTimeout(()=>{
+        setTimeout(() => {
             $("#msg-" + id).removeClass('fadeInDown');
             $("#msg-" + id).addClass('fadeOutUp');
-            setTimeout(()=> {
+            setTimeout(() => {
                 $("#msg-" + id).remove();
             }, 800);
         }, tempo)
     }
 }
-
+//templates
 cardapio.templates = {
 
     item: `
@@ -203,5 +249,24 @@ cardapio.templates = {
                 </div>
             </div>
         </div>
+    `,
+    itemCarrinho: `
+    <div class="col-12 item-carrinho">
+        <div class="img-produto">
+            <img src="\${img}">
+        </div>
+        <div class="dados-produto">
+            <p class="title-produto"><b>\${name}</b>
+            </p>
+            <p class="price-produto"><b>R$: \${price}</b>
+            </p>
+        </div>
+        <div class="add-carrinho">
+            <span class="btn-menos" onclick="cardapio.metodos.diminuirQuantidadeCarrinho('\${id}')"><i class="fas fa-minus"></i></span>
+            <span class="add-numero-itens" id="qntd-carrinho-\${id}">\${qntd}</span>
+            <span class="btn-mais" onclick="cardapio.metodos.aumentarQuantidadeCarrinho('\${id}')"><i class="fas fa-plus"></i></span>
+            <span class="btn btn-remove" onclick="cardapio.metodos.removerItemCarrinho('\${id}')"><i class="fa fa-times"></i></span>   
+        </div>
+    </div>
     `
 }
