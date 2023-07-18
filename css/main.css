@@ -51,7 +51,7 @@ b {
 }
 
 .btn-white{
-    background-color: var(--col or-white);
+    background-color: var(--color-white);
     color: var(--color-black)!important;
     border-radius: 20px;
     padding: 15px 25px;

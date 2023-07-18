@@ -4,6 +4,8 @@ $(document).ready(function () {
 
 var cardapio = {};
 var MEU_CARRINHO = [];
+var VALOR_CARRINHO = 0;
+var VALOR_ENTREGA = 5;
 
 cardapio.eventos = {
     init: () => {
@@ -178,10 +180,15 @@ cardapio.metodos = {
                 .replace(/\${qntd}/g, e.qntd);
 
                 $("#itensCarrinho").append(temp);
+                
+                if((i+1) == MEU_CARRINHO.length){
+                    cardapio.metodos.carregarValores();
+                }
             });
         } 
         else {
             $("#itensCarrinho").html('<p class="carrinho-vazio"><i class="fa fa-shopping-bag"></i>Seu carrinho está vazio.</p>');
+            cardapio.metodos.carregarValores();
 
         }
     },
@@ -209,6 +216,26 @@ cardapio.metodos = {
         let objIndex = MEU_CARRINHO .findIndex(obj => obj.id == id);
         MEU_CARRINHO[objIndex].qntd = qntd;
         cardapio.metodos.atualizarBadgeTotal();
+        cardapio.metodos.carregarValores();
+
+    },
+    carregarValores: ()=>{
+        VALOR_CARRINHO = 0;
+        $("#lblSubTotal").text('R$ 0,00');
+        $("#lblValorEntrega").text('+ R$ 0,00');
+        $("#lblValorTotal").text('R$ 0,00');
+        $.each(MEU_CARRINHO, (i,e) => {
+            VALOR_CARRINHO += parseFloat(e.price * e.qntd);
+
+            if ((i + 1) == MEU_CARRINHO.length) {
+                $("#lblSubtotal").text(`R$ ${VALOR_CARRINHO.toFixed(2).replace('.', ',')}`);
+
+                $("#lblValorEntrega").text(`+ R$ ${VALOR_ENTREGA.toFixed(2).replace('.', ',')}`);
+
+                $("#lblValorTotal").text(`R$ ${(VALOR_CARRINHO + VALOR_ENTREGA).toFixed(2).replace('.', ',')}`);
+            }
+        })
+
     },
 //mensagens
     mensagem: (texto, cor = 'red', tempo = 3500) => {
