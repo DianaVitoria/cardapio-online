@@ -238,16 +238,17 @@ b {
 }
 .container-menu{
     margin-bottom: 40px; 
+    cursor: pointer;
 }
 
 .card-item{
    height: 360px;
-
 }
+
 .card-item .img-produto img{
     width: 100%;
     border-radius: 11px;
-
+    cursor: pointer;
 }
 
 .card-item .title-produto {
