@@ -47,7 +47,7 @@ b {
 .nav-link{
     color: var(--color-black)!important;
     padding-left: 35px!important;
-    padding-right: 35px!important;
+    padding-right: 35px!important;    
 }
 
 .btn-white{
@@ -712,3 +712,4 @@ select.form-control{
     font-size: 20px;
 }
 
+  

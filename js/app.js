@@ -8,11 +8,15 @@ var MEU_ENDERECO = null;
 var VALOR_CARRINHO = 0;
 var VALOR_ENTREGA = 5;
 
+//eventos
 cardapio.eventos = {
     init: () => {
         cardapio.metodos.obterItensCardapio();
-    }
+    },
+    
+      
 }
+//metodos
 cardapio.metodos = {
     // Obtem a lista de itens do cardápio
     obterItensCardapio: (categoria = 'burgers', vermais = false) => {
@@ -343,6 +347,7 @@ cardapio.metodos = {
      $("#resumoEndereco").html(`${MEU_ENDERECO.endereco}, ${MEU_ENDERECO.numero}, ${MEU_ENDERECO.bairro}`);
      $("#cidadeEndereco").html(`${MEU_ENDERECO.cidade} - ${MEU_ENDERECO.uf} / ${MEU_ENDERECO.cep} ${MEU_ENDERECO.complemento}`);    
     },
+    
 //mensagens
     mensagem: (texto, cor = 'red', tempo = 3500) => {
         let id = Math.floor(Date.now() * Math.random()).toString();
@@ -363,7 +368,7 @@ cardapio.metodos = {
 cardapio.templates = {
 
     item: `
-        <div class="col-3 mb-5">
+        <div class="col-3 mb-5 animated fadeInUp">
             <div class="card card-item" id="\${id}">
                 <div class="img-produto">
                     <img src="\${img}">
