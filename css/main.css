@@ -80,7 +80,7 @@ b {
     padding-top: 6px;
 
 }
-
+/*banner*/
 .banner {
     padding-top: 110px;
     padding-bottom: 200px;
@@ -178,7 +178,7 @@ b {
     right: 20px;
     bottom: 10px;
 }
-
+/*serviços*/
 .servicos{
     padding-top: 100px;
     padding-bottom: 150px;
@@ -224,7 +224,7 @@ b {
     background-image: url(../img/bg-icons-2.png);
 
 }
-
+/*Cardapio*/
 .cardapio{
     padding-top: 100px;
     padding-bottom: 150px;
@@ -324,6 +324,7 @@ b {
     color: var(--color-black-heavy)!important;
     margin-top: 20px;
 }
+/*depoimentos*/
 .depoimentos {
     padding-top: 100px;
     padding-bottom: 150px;
@@ -405,6 +406,7 @@ b {
     justify-content: center;
     align-items: end;
 }
+/*reserva*/
 .reservas{
     padding-top: 100px;
     padding-bottom: 150px;
